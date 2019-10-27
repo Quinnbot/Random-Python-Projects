@@ -5,7 +5,7 @@ import threading
 clients = []
 
 
-def sendMSG(connection, inrequest, ignoreClient):
+def sendMSG(connection, inrequest):
 
      connectionSocket.send(inrequest.encode())
      connectionSocket.close()
@@ -19,7 +19,7 @@ serverSocket.listen(1)
 
 print('The server is ready to receive')
 while True:
-     print("ok")
+
      try:
           connectionSocket, addr = serverSocket.accept()
           message = connectionSocket.recv(1024).decode()
