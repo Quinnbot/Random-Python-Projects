@@ -1,7 +1,7 @@
 
 class sort():
 
-    #nums = [61, 93, 56, 90, 11]
+    # nums = [61, 93, 56, 90, 11]
     nums = [4, 1, 10, 8, 7, 12, 9, 2, 15]
 
     def changeArr(self, newArr):
@@ -14,20 +14,27 @@ class sort():
         self.nums[pos1] = self.nums[pos2]
         self.nums[pos2] = temp
 
-        return self.nums
-
     def QuickSelect(self, l, r, k):
 
-        s = self.lomuto(0, 4)
-        if(s == k-1):
+        s = self.lomuto(l, r)
 
-            return self.nums[s]
+        # print(self.nums)
+        # print(l)
+        # print(r)
+        # print(k)
+        # print(s)
+
+        if(s == k):
+            print(self.nums[s])
+            return self.nums#for some reason this just returns none. so im printing it out above.
         
-        elif(s > l + r - 1):
-            self.QuickSelect(l, s - 1, k)
+        elif(s > l + k):
+
+            self.QuickSelect(l, s, k)
 
         else:
-            self.QuickSelect(s + 1, r, k - 1 - s)
+
+            self.QuickSelect(s, r, k - s)
 
     def lomuto(self, l, r):
 
@@ -39,9 +46,9 @@ class sort():
             if(self.nums[i] < P):
 
                 s = s + 1
-                self.nums = self.swap(s, i)
+                self.swap(s, i)
 
-        self.nums = self.swap(l, s)
+        self.swap(l, s)
         return s
 
 
@@ -49,4 +56,4 @@ class sort():
 
 test = sort()
 
-print(test.QuickSelect(0, 10, 5))
+print(test.QuickSelect(0, 8, 4))
